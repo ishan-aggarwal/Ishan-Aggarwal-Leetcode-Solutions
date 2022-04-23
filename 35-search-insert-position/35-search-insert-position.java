@@ -1,4 +1,10 @@
 class Solution {
+    
+    // make use of binary search to find the correct insert position
+    // calculate mid and check for the insert pos
+    // if equal return mid only
+    
+    // otherwise when the while loop breaks, then l will point to the insertion position for element 
     public int searchInsert(int[] nums, int target) {
         int l = 0, r = nums.length - 1;
         
@@ -20,6 +26,8 @@ class Solution {
             }
         }
         
+        // l will point to the location where the element can be inserted in case 
+        // it is not present in the array
         return l;
     }
 }
