@@ -18,6 +18,7 @@ class Solution {
             return;
         }
         
+        
         curr.add(nums[idx]);
         solve(idx + 1, nums, curr, ans);
         
