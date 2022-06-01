@@ -1,4 +1,9 @@
 class Solution {
+    
+    // SC - O(M*N)
+    // TC - O(M*N) - Because we are iterating over the entire matrix and visiting each cell.. Not repeating the calculations if the LIS is already computed
+    // for any of the cells.
+    
     public int longestIncreasingPath(int[][] matrix) {
         
         int rows = matrix.length;
