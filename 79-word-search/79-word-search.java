@@ -38,10 +38,10 @@ class Solution {
 				|| dfs(row, column - 1, board, word, curIndex + 1) || dfs(row + 1, column, board, word, curIndex + 1)
 				|| dfs(row - 1, column, board, word, curIndex + 1);
 
-		if (!isMatched) {
-			// reset to original state
+		// if (!isMatched) {
+		// 	// reset to original state
 			board[row][column] = word.charAt(curIndex);
-		}
+		// }
 
 		return isMatched;
 	}
