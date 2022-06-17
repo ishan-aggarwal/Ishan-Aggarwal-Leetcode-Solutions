@@ -14,26 +14,35 @@
  * }
  */
 class Solution {
+    int camera = 0;
+    public enum Camera { HAS_CAMERA, COVERED, PLEASE_COVER };
+    
     public int minCameraCover(TreeNode root) {
-        int[] ans = solve(root);
-        return Math.min(ans[1], ans[2]);
+        // If root is not covered then we need to place a camera at root node
+        return cover(root) == Camera.PLEASE_COVER ? ++camera : camera;
     }
-
-    // 0: Strict ST; All nodes below this are covered, but not this one
-    // 1: Normal ST; All nodes below and incl this are covered - no camera
-    // 2: Placed camera; All nodes below this are covered, plus camera here
-    public int[] solve(TreeNode node) {
-        if (node == null)
-            return new int[]{0, 0, 99999};
-
-        int[] L = solve(node.left);
-        int[] R = solve(node.right);
-        int mL12 = Math.min(L[1], L[2]);
-        int mR12 = Math.min(R[1], R[2]);
-
-        int d0 = L[1] + R[1];
-        int d1 = Math.min(L[2] + mR12, R[2] + mL12);
-        int d2 = 1 + Math.min(L[0], mL12) + Math.min(R[0], mR12);
-        return new int[]{d0, d1, d2};
+    
+    public Camera cover(TreeNode root) {
+        
+        // Base case - if there is no node then it's already covered
+        if (root == null)
+            return Camera.COVERED;
+        
+        // Try to cover left and right children's subtree
+        Camera l = cover(root.left);
+        Camera r = cover(root.right);
+        
+        // If Any one of the children is not covered then we must place a camera at current node
+        if (l ==  Camera.PLEASE_COVER || r == Camera.PLEASE_COVER) {
+            camera++;
+            return Camera.HAS_CAMERA;
+        }
+        
+        // If any one of left or right node has Camera then the current node is also covered
+        if (l== Camera.HAS_CAMERA || r == Camera.HAS_CAMERA) 
+            return Camera.COVERED;
+        
+        // If None of the children is covering the current node then ask it's parent to cover
+        return Camera.PLEASE_COVER;
     }
 }
