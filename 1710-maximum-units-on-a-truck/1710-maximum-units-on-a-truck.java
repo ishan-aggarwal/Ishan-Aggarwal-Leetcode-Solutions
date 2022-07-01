@@ -1,6 +1,5 @@
 class Solution {
     public int maximumUnits(int[][] boxTypes, int truckSize) {
-        
         int answer = 0;
         
         Arrays.sort(boxTypes, (int[] first, int[] second) -> {
