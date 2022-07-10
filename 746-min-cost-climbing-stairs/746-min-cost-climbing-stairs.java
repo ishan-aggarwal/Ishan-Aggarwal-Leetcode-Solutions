@@ -1,7 +1,5 @@
 class Solution {
     public int minCostClimbingStairs(int[] cost) {
-
-
         int n = cost.length;
         // minimum cost of first two stairs would be the cost of 
         // getting to that stair it self, becuase, cost is positive, 
@@ -26,5 +24,6 @@ class Solution {
         }
         
         return Math.min(f, s);
+
     }
 }
