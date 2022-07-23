@@ -6,4 +6,4 @@ SELECT
 FROM 
     Employees 
 ORDER BY 
-    employee_id ASC;
+    employee_id;
