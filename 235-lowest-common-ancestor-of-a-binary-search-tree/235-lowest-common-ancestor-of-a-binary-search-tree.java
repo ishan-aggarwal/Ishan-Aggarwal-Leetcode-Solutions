@@ -10,10 +10,9 @@
 
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        
-        if (root == null) return null;
-        
-        if (p == null || q == null) return null;
+
+        // if any of the nodes is null, return null
+        if (root == null || p == null || q == null) return null;
         
         // Value of current node or parent node.
         int parentVal = root.val;
