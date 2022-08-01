@@ -15,9 +15,9 @@ class Solution {
 
         // Filling the values for the first column
         for (int i = 1; i < R; i++) {
-            obstacleGrid[i][0] = (obstacleGrid[i][0] == 0 && obstacleGrid[i - 1][0] == 1) ? 1 : 0;
+            obstacleGrid[i][0] = (obstacleGrid[i][0] == 0 && obstacleGrid[i - 1][0] == 1) ? 1 : 0;  
         }
-
+        
         // Filling the values for the first row
         for (int i = 1; i < C; i++) {
             obstacleGrid[0][i] = (obstacleGrid[0][i] == 0 && obstacleGrid[0][i - 1] == 1) ? 1 : 0;
