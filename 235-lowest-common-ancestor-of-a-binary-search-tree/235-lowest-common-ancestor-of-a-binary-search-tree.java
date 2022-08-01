@@ -13,6 +13,8 @@ class Solution {
         
         if (root == null) return null;
         
+        if (p == null || q == null) return null;
+        
         // Value of current node or parent node.
         int parentVal = root.val;
 
