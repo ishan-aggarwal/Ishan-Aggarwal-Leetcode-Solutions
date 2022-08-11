@@ -20,6 +20,8 @@ class Solution {
         }
         
         // check for the right most value of left sub tree
+        // as right most value would be greatest on left sub tree side
+        // so compare that value with the root val
         if (root.left != null) {
             TreeNode temp = root.left;
             
@@ -34,6 +36,8 @@ class Solution {
         
         
         // check for left most value of right sub tree
+        // as left most value would be smallest on right sub tree side
+        // so compare that value with the root val
         if (root.right != null) {
             TreeNode temp = root.right;
             
