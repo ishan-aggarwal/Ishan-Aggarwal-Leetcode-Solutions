@@ -1,11 +1,11 @@
 class Foo {
 
-    private Semaphore one;
-    private Semaphore two;
+    private Semaphore forTwo;
+    private Semaphore forThree;
     
     public Foo() {
-        one = new Semaphore(0);
-        two = new Semaphore(0);
+        forTwo = new Semaphore(0);
+        forThree = new Semaphore(0);
     }
 
 
@@ -14,23 +14,23 @@ class Foo {
         
         // printFirst.run() outputs "first". Do not change or remove this line.
         printFirst.run();
-        one.release();
+        forTwo.release();
     }
 
     public void second(Runnable printSecond) throws InterruptedException {
         
-        one.acquire();
+        forTwo.acquire();
         
         // printSecond.run() outputs "second". Do not change or remove this line.
         printSecond.run();
         
-        two.release();
+        forThree.release();
     }
 
     public void third(Runnable printThird) throws InterruptedException {
         
         
-        two.acquire();
+        forThree.acquire();
         
         // printThird.run() outputs "third". Do not change or remove this line.
         printThird.run();
