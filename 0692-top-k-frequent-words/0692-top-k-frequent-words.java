@@ -1,6 +1,6 @@
 class Solution {
     public List < String > topKFrequent(String[] words, int k) {
-        Map < String, Integer > map = new HashMap < > ();
+        Map<String, Integer > map = new HashMap <> ();
         List < String > ans = new LinkedList < > ();
 
         for (int i = 0; i < words.length; i++) {
@@ -11,13 +11,16 @@ class Solution {
                 map.put(words[i], 1);
         }
 
-        PriorityQueue < String > pq = new PriorityQueue < > ((a, b) -> map.get(a) == map.get(b) ? b.compareTo(a) : map.get(a) - map.get(b)); //-1 means no swap
-        System.out.println(pq);
+        PriorityQueue<String> pq = new PriorityQueue <> ((a, b) -> map.get(a) == map.get(b) ? b.compareTo(a) : map.get(a) - map.get(b)); //-1 means no swap
+        //System.out.println(pq);
 
-        for (String s: map.keySet()) {
+        for (String s : map.keySet()) {
             pq.offer(s);
-            if (pq.size() > k)
+            System.out.println(pq);
+            if (pq.size() > k) {
                 pq.poll();
+                System.out.println(pq);
+            }
         }
         while (!pq.isEmpty())
             ans.add(0, pq.poll());
