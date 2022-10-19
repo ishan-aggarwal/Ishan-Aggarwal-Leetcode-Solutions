@@ -22,6 +22,18 @@ class Solution {
     // }
     
     
+    // Approach 2. Min Heap
+    /*
+    1. We need to be careful with the order, considering not only the frequency but the word lexicographically.
+    2. The min heap doesn't guarantee the order. We need to sort the elements in the heap before returning them or just pop them one by one            from the min-heap to our result in order.
+    
+    
+
+    Time Complexity: O(Nlog⁡k), where N is the length of words. We count the frequency of each word in O(N) time, then we add N words to the heap, each in O(log⁡k) time. Finally, we pop from the heap up to kk times or just sort all elements in the heap as the returned result, which takes O(klog⁡k). As k≤N, O(N)+O(Nlog⁡k)+O(klog⁡k)=O(Nlog⁡k)
+
+    Space Complexity: O(N), O(N) space is used to store our counter cnt while O(k) space is for the heap.
+    */
+    
     
     public List < String > topKFrequent(String[] words, int k) {
         Map<String, Integer> map = new HashMap<>();
