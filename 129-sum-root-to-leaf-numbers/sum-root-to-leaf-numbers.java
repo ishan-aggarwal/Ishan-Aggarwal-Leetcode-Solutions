@@ -14,29 +14,25 @@
  * }
  */
 class Solution {
+
+    int ans = 0;
+
     public int sumNumbers(TreeNode root) {
-
-        List<String> paths = new ArrayList<>();
-        String current = "";
-
-        findPaths(root, current, paths);
-        
-        int sum = 0;
-        for (String path : paths) {
-            sum += Integer.parseInt(path);
-        }
-        return sum;
+        findPathSum(root, "");
+        return ans;
     }
 
-    public void findPaths(TreeNode root, String current, List<String> paths) {
+    public void findPathSum(TreeNode root, String currentPathSum) {
         if (root == null) {
             return;
         }
         if (root.left == null && root.right == null) {
-            paths.add(current+root.val);
+            currentPathSum += root.val;
+            ans += Integer.parseInt(currentPathSum);
             return;
         }
-        findPaths(root.left, current+root.val, paths);
-        findPaths(root.right, current+root.val, paths);
+        currentPathSum += root.val;
+        findPathSum(root.left, currentPathSum);
+        findPathSum(root.right, currentPathSum);
     }
 }
