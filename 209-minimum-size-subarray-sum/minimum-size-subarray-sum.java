@@ -1,27 +1,25 @@
 class Solution {
     public int minSubArrayLen(int target, int[] nums) {
+        
         int ans = Integer.MAX_VALUE;
-        int l = 0, r = 0;
         int n = nums.length;
-        int currSum = 0;
-
-        while (r < n) {
-            currSum += nums[r]; // 9
-
-            // i need to check if my 
-            // current sum is greater than or equal to
-            // the target
-            // then i can possibly find an answer
-
-            while (currSum >= target) {
-                int currLength = r - l + 1; //2
-                if (currLength < ans) {
-                    ans = currLength; // 2
+        int left = 0;
+        int right = 0;
+        int sum = 0;
+        
+        while (right < n) {
+            int value = nums[right];
+            sum += value;
+            while (sum >= target) {
+                if (sum >= target) {
+                    ans = Math.min(ans, right - left + 1); // 4
                 }
-                currSum -= nums[l];
-                l++;
+                int leftValue = nums[left];
+                sum -= leftValue;
+                left++;
             }
-            r++; // r = 5
+
+            right++;
         }
 
         return ans == Integer.MAX_VALUE ? 0 : ans;
