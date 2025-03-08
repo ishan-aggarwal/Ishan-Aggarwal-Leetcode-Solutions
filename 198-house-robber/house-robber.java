@@ -6,7 +6,9 @@ class Solution {
         int n = nums.length;
         dp = new int[n];
         Arrays.fill(dp, -1);
-        return solve(nums, n - 1);
+        solve(nums, n - 1);
+
+        return dp[n - 1];
     }
 
     public int solve(int[] nums, int idx) {
