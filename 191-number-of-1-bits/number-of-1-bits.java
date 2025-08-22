@@ -1,12 +1,11 @@
 class Solution {
     public int hammingWeight(int n) {
-        int countOneBits = 0;
-        for (int i = 0; i < 32; i++) {
-            int mask = 1 << i;
-            if ((n & mask) != 0) {
-                countOneBits++;
+        int countBits = 0;
+        for (int bit = 0; bit < 32; bit++) {
+            if ((n & (1 << bit)) > 0) {
+                countBits++;
             }
         }
-        return countOneBits;
+        return countBits;
     }
 }
