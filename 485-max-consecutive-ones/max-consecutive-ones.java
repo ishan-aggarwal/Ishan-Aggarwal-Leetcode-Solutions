@@ -5,11 +5,10 @@ class Solution {
         for (int ele : nums) {
             if (ele == 1) {
                 currentCount++;
-            }
-            ans = Math.max(currentCount, ans);
-            if (ele == 0) {
+            } else {
                 currentCount = 0;
             }
+            ans = Math.max(currentCount, ans);
         }
         return ans;
     }
