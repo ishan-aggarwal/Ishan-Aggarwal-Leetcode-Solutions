@@ -5,11 +5,9 @@ class Solution {
         int i = 0, j = 0;
         while (i < n && j < m) {
             if (s.charAt(i) == t.charAt(j)) {
-                i++;
-                j++;
-            } else {
-                j++;
-            }
+                i++;  
+            } 
+            j++;
         }
         return (i == n) ? true : false;
     }
