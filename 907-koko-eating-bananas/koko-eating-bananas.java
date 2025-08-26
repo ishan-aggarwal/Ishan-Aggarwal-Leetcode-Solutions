@@ -19,14 +19,23 @@ class Solution {
         return ans;
     }
 
-
     private long countHours(int[] piles, int speed) {
         long hours = 0;
         for (int pile : piles) {
-            hours += (int) Math.ceil((double) pile / speed);
+            hours += (pile + speed - 1L) / speed; // ceil(pile/speed)
         }
         return hours;
     }
+
+
+
+    // private long countHours(int[] piles, int speed) {
+    //     long hours = 0;
+    //     for (int pile : piles) {
+    //         hours += (int) Math.ceil((double) pile / speed);
+    //     }
+    //     return hours;
+    // }
 
     private int getMax(int[] piles) {
         int max = piles[0];
