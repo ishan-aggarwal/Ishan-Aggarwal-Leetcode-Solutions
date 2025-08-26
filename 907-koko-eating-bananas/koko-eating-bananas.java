@@ -7,7 +7,7 @@ class Solution {
 
         while (l <= r) {
             int mid = l + (r - l) / 2;
-            long hours = countHours(piles, mid, h);
+            long hours = countHours(piles, mid);
             if (hours <= h) {
                 ans = mid;        // possible answer
                 r = mid - 1;      // try smaller speed
@@ -20,13 +20,10 @@ class Solution {
     }
 
 
-    private long countHours(int[] piles, int speed, int h) {
+    private long countHours(int[] piles, int speed) {
         long hours = 0;
         for (int pile : piles) {
             hours += (int) Math.ceil((double) pile / speed);
-            if (hours > h) {
-                return hours;
-            }
         }
         return hours;
     }
