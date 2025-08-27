@@ -3,44 +3,37 @@ class Solution {
         int min = Integer.MAX_VALUE;
         int max = Integer.MIN_VALUE;
 
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] > max) {
-                max = nums[i];
-            }
-
-            if (nums[i] < min) {
-                min = nums[i];
-            }
+        for (int num : nums) {
+            min = Math.min(min, num);
+            max = Math.max(max, num);
         }
 
-        // search space
-        long l = min;
-        long r = max;
-        long ans = 0;
+        int l = min;
+        int r = max;
+        int ans = 0;
+
         while (l <= r) {
-            // The capability of the robber is the maximum 
-            // amount of money he steals from one house of all the houses he robbed.
-            long mid = l + (r - l) / 2; 
-            long houses = countHouses(nums, mid);
+            int mid = l + (r - l) / 2;
+            int houses = countHouses(nums, mid);
             if (houses >= k) {
                 ans = mid;
-                r = mid - 1;
+                r = mid - 1; // search left for smaller capability
             } else {
-                l = mid + 1;               
+                l = mid + 1;
             }
         }
-        return (int) ans;
+
+        return ans;
     }
 
-    private long countHouses(int[] nums, long capability) {
-        int i = 0;
-        long count = 0;
-        for (; i < nums.length; ) {
-            if (nums[i] <= capability) {
+    private int countHouses(int[] nums, int capability) {
+        int count = 0;
+        for (int i = 0; i < nums.length; ) {
+            if (nums[i] <= capability) { // careful: capability is the max he can steal
                 count++;
                 i += 2;
             } else {
-                i += 1;
+                i++;
             }
         }
         return count;
