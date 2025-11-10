@@ -1,16 +1,14 @@
 class Solution {
 
     public int minOperations(int[] nums) {
-        // List<Integer> s = new ArrayList<>();
-        Stack<Integer> s = new Stack<>();
+        List<Integer> s = new ArrayList<>();
         int res = 0;
         for (int a : nums) {
-            while (!s.isEmpty() && s.peek() > a) {
-                // s.remove(s.size() - 1);
-                s.pop();
+            while (!s.isEmpty() && s.get(s.size() - 1) > a) {
+                s.remove(s.size() - 1);
             }
             if (a == 0) continue;
-            if (s.isEmpty() || s.peek() < a) {
+            if (s.isEmpty() || s.get(s.size() - 1) < a) {
                 res++;
                 s.add(a);
             }
